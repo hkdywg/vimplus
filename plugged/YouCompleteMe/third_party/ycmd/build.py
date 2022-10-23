@@ -765,7 +765,26 @@ def ExtractCsCompleter( writeStdout, build_dir, package_path ):
       package_zip.extractall()
   else:
     with tarfile.open( package_path ) as package_tar:
-      package_tar.extractall()
+      def is_within_directory(directory, target):
+          
+          abs_directory = os.path.abspath(directory)
+          abs_target = os.path.abspath(target)
+      
+          prefix = os.path.commonprefix([abs_directory, abs_target])
+          
+          return prefix == abs_directory
+      
+      def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+      
+          for member in tar.getmembers():
+              member_path = os.path.join(path, member.name)
+              if not is_within_directory(path, member_path):
+                  raise Exception("Attempted Path Traversal in Tar File")
+      
+          tar.extractall(path, members, numeric_owner=numeric_owner) 
+          
+      
+      safe_extract(package_tar)
   writeStdout( 'DONE\n' )
 
 
@@ -996,7 +1015,26 @@ def EnableJavaCompleter( switches ):
 
   Print( "Extracting jdt.ls to {0}...".format( REPOSITORY ) )
   with tarfile.open( file_name ) as package_tar:
-    package_tar.extractall( REPOSITORY )
+    def is_within_directory(directory, target):
+        
+        abs_directory = os.path.abspath(directory)
+        abs_target = os.path.abspath(target)
+    
+        prefix = os.path.commonprefix([abs_directory, abs_target])
+        
+        return prefix == abs_directory
+    
+    def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+    
+        for member in tar.getmembers():
+            member_path = os.path.join(path, member.name)
+            if not is_within_directory(path, member_path):
+                raise Exception("Attempted Path Traversal in Tar File")
+    
+        tar.extractall(path, members, numeric_owner=numeric_owner) 
+        
+    
+    safe_extract(package_tar, REPOSITORY)
 
   Print( "Done installing jdt.ls" )
 
@@ -1078,7 +1116,26 @@ def DownloadClangd( printer ):
 
   printer( "Extracting Clangd to {}...".format( CLANGD_OUTPUT_DIR ) )
   with tarfile.open( file_name ) as package_tar:
-    package_tar.extractall( CLANGD_OUTPUT_DIR )
+    def is_within_directory(directory, target):
+        
+        abs_directory = os.path.abspath(directory)
+        abs_target = os.path.abspath(target)
+    
+        prefix = os.path.commonprefix([abs_directory, abs_target])
+        
+        return prefix == abs_directory
+    
+    def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+    
+        for member in tar.getmembers():
+            member_path = os.path.join(path, member.name)
+            if not is_within_directory(path, member_path):
+                raise Exception("Attempted Path Traversal in Tar File")
+    
+        tar.extractall(path, members, numeric_owner=numeric_owner) 
+        
+    
+    safe_extract(package_tar, CLANGD_OUTPUT_DIR)
 
   printer( "Done installing Clangd" )
 
