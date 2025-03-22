@@ -1,3 +1,16 @@
+<p align="center">
+<img src="./doc/logo.png">
+</p>
+
+An automatic configuration program for vim
+===============================================
+
+## 安装vimplus
+
+    git clone https://github.com/hkdywg/vimplus.git ~/.vimplus
+    cd ~/.vimplus
+    ./install.sh
+
 ## 插件列表
 
 | 插件                                | 说明                                                                           |
@@ -34,7 +47,7 @@
 | [clever-f.vim][68]                  | 强化f和F键                                                                     |
 
 
-## 快捷键
+## 常用快捷键
 
 以下是部分快捷键，可通过vimplus的`,h`命令查看[vimplus帮助文档][59]。
 
@@ -94,42 +107,61 @@
 | `<leader><leader>u` | 更新插件                                  |
 | `<leader><leader>c` | 删除插件                                  |
 
-
-## FAQ
-
-- **`vimplus怎么安装新插件？`**
-
-    编辑[~/.vimrc.custom.plugins]，添加自定义插件。
-
-- **`vimplus怎么添加自定义配置？`**
-
-    编辑[~/.vimrc.custom.config]，添加自定义配置。
-
-- **`vimplus安装脚本会在自己电脑上安装哪些软件？`**
-
-    网络良好情况下，vimplus只需30分钟左右即可将vim cpp环境配置好，vimplus真正的做到了一键配置，不让用户操心。vimplus会安装一些必备软件，比如说python、cmake、gcc、fontconfig等，vimplus也考虑到了有些系统的vim不支持python，它会自动去下载vim源码将python支持编译进去，vimplus也会安装nerd-font不让vim显示出现乱码，最最重要的是vimplus实现了ycm自动编译安装，给折腾了几天ycm都没有安装好的用户带来了新的希望，而且vimplus也支持macos和linux众多发行版，让linux发烧友频繁切换发行版而不用操心vim环境配置。最后说了这么多，不如看[vimplus安装脚本]来的直接:smile:。
-
-- **`启动vim报错：RequestsDependencyWarning: Old version of cryptography ([1, 2, 3]) may cause slowdown.`**
-
-    可以尝试将cryptography删掉。
-
-- **`安装vimplus后Airline等插件有乱码，怎么解决？`**
-
-    linux和mac系统需设置终端字体为`Droid Sans Mono Nerd Font`。
-
-- **`xshell连接远程主机不能使用vim-devicons或乱码。`**
-
-    windows系统安装[Nerd Font][51]字体后并更改xshell字体即可。
-
-- **`ubuntu18.04安装了nerd font但通过终端属性并没有看到该字体。`**
-
-    可以试试dconf-editor软件来设置。
-
-- **`使用第三方库时怎么让ycm补全第三方库API？`**
-
-    vimplus安装完毕之后，`~`目录下将会生成两个隐藏文件分别是.vimrc和.ycm_extra_conf.py，其中.vimrc是vim的配置文件，.ycm_extra_conf.py是ycm插件的配置文件，当你需要创建一个project时，需要将.ycm_extra_conf.py拷贝到project的顶层目录，通过修改该配置文件里面的`flags`变量来添加你的第三方库路径。
-
-- **`使用vi命令报错：E492: Not an editor command:`**
-
-    vimplus安装完成后，linux下可能会同时存在vi和vim命令，执行vi时，vi加载~/.vimrc文件可能会报错，但不影响使用，如果要消除错误可以设置软链接`ln -s /usr/bin/vim /usr/bin/vi`
+[3]: https://brew.sh/
+[4]: https://github.com/junegunn/vim-plug
+[5]: https://github.com/Valloric/YouCompleteMe
+[6]: https://github.com/preservim/nerdtree
+[8]: https://github.com/vim-airline/vim-airline
+[9]: https://github.com/powerline/powerline
+[10]: https://github.com/jiangmiao/auto-pairs
+[12]: https://github.com/ctrlpvim/ctrlp.vim
+[13]: https://github.com/preservim/tagbar
+[14]: https://github.com/vim-scripts/taglist.vim
+[15]: https://github.com/ryanoasis/vim-devicons
+[16]: https://github.com/tpope/vim-surround
+[17]: https://github.com/tpope/vim-commentary
+[18]: https://github.com/tpope/vim-repeat
+[19]: https://github.com/tpope/vim-endwise
+[20]: https://github.com/godlygeek/tabular
+[23]: https://github.com/easymotion/vim-easymotion
+[24]: https://github.com/haya14busa/incsearch.vim
+[25]: https://github.com/mhinz/vim-startify
+[27]: https://github.com/chxuan/change-colorscheme
+[36]: https://github.com/tpope/vim-fugitive
+[38]: https://github.com/Valloric/YouCompleteMe
+[39]: https://github.com/chxuan/vimplus/issues
+[50]: https://github.com/junegunn/vim-slash
+[51]: https://github.com/ryanoasis/nerd-fonts
+[52]: https://github.com/tiagofumo/vim-nerdtree-syntax-highlight
+[53]: https://github.com/Xuyuanp/nerdtree-git-plugin
+[54]: https://github.com/VundleVim/Vundle.vim
+[56]: https://github.com/Yggdroot/LeaderF
+[57]: https://github.com/Shougo/echodoc.vim
+[58]: https://github.com/chxuan/cpp-mode
+[59]: https://github.com/chxuan/vimplus/blob/master/help.md
+[60]: https://github.com/terryma/vim-smooth-scroll
+[62]: https://github.com/mileszs/ack.vim
+[64]: https://github.com/junegunn/gv.vim
+[66]: https://github.com/chxuan/vimplus-startify
+[67]: https://github.com/chxuan/prepare-code
+[68]: https://github.com/rhysd/clever-f.vim
+[70]: https://github.com/chxuan/vim-buffer
+[72]: https://github.com/chxuan/vim-edit
+[75]: https://github.com/chxuan/vimplus/blob/master/LICENSE
+[76]: https://blog.csdn.net/wang73ying/article/details/82491993
+[77]: https://blog.csdn.net/liuyangbo121/article/details/82971736
+[78]: https://github.com/chxuan/vimplus/blob/master/install.sh
+[79]: https://hub.docker.com/r/chxuan/ubuntu-vimplus
+[80]: https://github.com/zhoumengkang
+[81]: https://github.com/chxuan/vimplus/issues/208
+[82]: https://github.com/chxuan/vimplus/blob/master/.vimrc
+[83]: https://github.com/chxuan/vimplus/blob/master/.vimrc.custom.plugins
+[84]: https://github.com/chxuan/vimplus/blob/master/.vimrc.custom.config
+[85]: https://github.com/zibraque
+[86]: https://github.com/gfreewind
+[87]: https://termux.com/
+[88]: https://github.com/wh656325437
+[89]: https://github.com/luguifang
+[90]: https://github.com/liyewen521
+[91]: https://github.com/xht19980305
 
