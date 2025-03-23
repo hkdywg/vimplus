@@ -139,6 +139,7 @@ Plug 'Shougo/echodoc.vim'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/indentpython.vim'
+" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
 
 " 加载自定义插件
 if filereadable(expand($HOME . '/.vimrc.custom.plugins'))
@@ -312,8 +313,7 @@ let g:Lf_WildIgnore = {
             \}
 let g:Lf_UseCache = 0
 
-" ack
-nnoremap <leader>F :Ack!<space>
+nnoremap <leader>F :Leaderf rg<CR>
 
 " echodoc.vim
 let g:echodoc_enable_at_startup = 1

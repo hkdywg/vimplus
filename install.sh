@@ -193,6 +193,8 @@ function install_prepare_software_on_ubuntu()
 
     sudo apt-get install -y build-essential python python-dev python3-dev fontconfig libfile-next-perl ack-grep git
     sudo apt-get install -y universal-ctags || sudo apt-get install -y exuberant-ctags
+    sudo apt-get install -y ripgrep
+
     
     if [ $version -ge 18 ];then
         sudo apt-get install -y vim
