@@ -139,7 +139,7 @@ Plug 'Shougo/echodoc.vim'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/indentpython.vim'
-" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
 
 " 加载自定义插件
 if filereadable(expand($HOME . '/.vimrc.custom.plugins'))
@@ -313,7 +313,23 @@ let g:Lf_WildIgnore = {
             \}
 let g:Lf_UseCache = 0
 
-nnoremap <leader>F :Leaderf rg<CR>
+
+" 设置 LeaderF 的搜索模式为精确匹配
+nnoremap <leader>F :Leaderf rg --live<cr>
+
+let g:Lf_RgConfig = [
+        \ "--max-columns=150",
+        \ "--type-add web:*.{html,css,js}*",
+        \ "--glob=!git/*",
+        \ "--case-sensitive --fixed-strings",
+        \ "--hidden"
+    \ ]
+
+let g:Lf_PreviewInPopup = 1
+" open the preview window automatically
+let g:Lf_PreviewResult = {'Rg': 1 }
+
+" noremap <leader>F :<C-U><C-R>=printf("Leaderf! rg --case-sensitive --fixed-strings %s ", expand("<cword>"))<CR>
 
 " echodoc.vim
 let g:echodoc_enable_at_startup = 1
