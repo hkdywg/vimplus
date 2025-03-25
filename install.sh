@@ -229,7 +229,7 @@ function install_prepare_software_on_centos()
 function copy_files()
 {
     rm -rf ~/.vimrc
-    ln -s ${PWD}/.vimrc ~
+    cp ${PWD}/.vimrc ~
 
 #    rm -rf ~/.vimrc.custom.plugins
 #    cp ${PWD}/.vimrc.custom.plugins ~
@@ -242,13 +242,14 @@ function copy_files()
 
     mkdir ~/.vim
     rm -rf ~/.vim/colors
-    ln -s ${PWD}/colors ~/.vim
+    cp ${PWD}/colors ~/.vim
 
 #    rm -rf ~/.vim/ftplugin
 #    ln -s ${PWD}/ftplugin ~/.vim
 
     rm -rf ~/.vim/autoload
-    ln -s ${PWD}/autoload ~/.vim
+    cp ${PWD}/autoload ~/.vim
+    cp ${PWD}/help.md ~/.vim/
 }
 
 # 安装linux平台字体
