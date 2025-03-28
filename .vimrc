@@ -109,7 +109,8 @@ Plug 'chxuan/prepare-code'
 Plug 'chxuan/vim-buffer'
 Plug 'chxuan/vimplus-startify'
 Plug 'chxuan/tagbar'
-" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', {'branch': 'legacy-vim-8.1'}
+"Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82'}
 Plug 'Yggdroot/LeaderF'
 Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
